@@ -9,12 +9,12 @@
                     <div class="align-self-center text-center">
                         <strong>{{ solicitacao_de_servico.date|date:"l" }}</strong>
                         <h1 class="display-4">{{ solicitacao_de_servico.date.day }}</h1>
-    		    {{ solicitacao_de_servico.date|date:"d/m/Y" }}
+                            {{ solicitacao_de_servico.date|date:"d/m/Y" }}
                     </div>
                 </div>
                 <div class="card-body">
                     <h1>Solicitação de Serviço <small>N&ordm;{{ solicitacao_de_servico.id }}</small></h1>
-                    <div role="alert" class="d-flex alert {% if event.priority == '1' %} alert-success{% elif event.priority == '2' %} alert-warning{% elif event.priority == '3' %} alert-danger{% else %} alert-secondary{% endif %}">
+                    <div role="alert" class="d-flex alert {% if solicitacao_de_servico.prioridade == '1' %} alert-success{% elif solicitacao_de_servico.prioridade == '2' %} alert-warning{% elif solicitacao_de_servico.prioridade == '3' %} alert-danger{% else %} alert-secondary{% endif %}">
                         <div class="p-2 text-truncate">
                             {{ solicitacao_de_servico.solicitacao_de_servico }}
                         </div>

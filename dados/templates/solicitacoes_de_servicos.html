@@ -9,7 +9,7 @@
             <h1>Solicitações de Serviços</h1>
         </div>
         <div class="card-body">
-            {% if solicitacao_de_servico|length > 0 %}
+            {% if solicitacoes_de_servicos|length > 0 %}
             <table class="table table-sm table-responsive-sm">
                 <thead class="thead-dark">
                 <tr>
@@ -21,20 +21,20 @@
                 {% for solicitacao_de_servico in solicitacoes_de_servicos %}
                 <tr class="{% if solicitacao_de_servico.prioridade == '1' %} table-success{% elif event.priority == '2' %} table-warning{% elif event.priority == '3' %} table-danger{% else %} table-default{% endif %}">
                     <td><a class="text-dark"
-                           href="{% url 'agenda-events-day' event.date.year event.date.month event.date.day %}">
+                           href="{% url 'solicitacao-de-servico-day' solicitacao_de_servico.data_de_entrega_do_relatorio.year solicitacao_de_servico.data_de_entrega_do_relatorio.month solicitacao_de_servico.data_de_entrega_do_relatorio.day %}">
                         {{ event.date|date:"d-m-Y" }}</a></td>
                     <td class="text-truncate">
-                        <a class="text-dark" href="{% url 'agenda-events-show' event.id %}">{{ event.event }}</a>
+                        <a class="text-dark" href="{% url 'solicitacao-de-servico-show' solicitacao_de_servico.id %}">{{ solicitacao_de_servico.id }}</a>
                     </td>
                 </tr>
                 {% endfor %}
                 </tbody>
             </table>
             <hr/>
-            <p>Você tem {{ events|length }} evento{{ events|pluralize }} registrado{{ events|pluralize }}.</p>
+            <p>Você tem {{ solicitacoes_de_servicos|length }} SSL{{ solicitacoes_de_servicos|pluralize }} registrado{{ solicitacoes_de_servicos|pluralize }}.</p>
             {% else %}
             <div class="alert alert-secondary text-center">
-                Sem eventos cadastrados.
+                Sem solicitações de serviços cadastrados.
             </div>
             {% endif %}
         </div>
