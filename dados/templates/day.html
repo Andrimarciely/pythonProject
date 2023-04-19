@@ -11,22 +11,22 @@
                     </div>
                     <div class="align-self-center text-center">
                         <strong>{{ day|date:"l" }}</strong>
-    		    <h1 class="display-4">{{ day.day }}</h1>
-                    {{ day|date:"d/m/Y" }}
+    		            <h1 class="display-4">{{ day.day }}</h1>
+                           {{ day|date:"d/m/Y" }}
                     </div>
                     <div class="align-self-center">
                         <a href="{% url 'solicitacao-de-servico-day' next.year next.month next.day %}"}}>&gt;&gt;</a>
                     </div>
                 </div>
                 <div class="card-body">
-            {% if events|length > 0 %}
-            {% for event in events %}
+            {% if solicitacoes_de_servicos|length > 0 %}
+                {% for solicitacao_de_servico in solicitacoes_de_servicos %}
                 <div role="alert" class="d-flex alert {% if solicitacao_de_servico.prioridade == '1' %} alert-success{% elif solicitacao_de_servico.prioridade == '2' %} alert-warning{% elif solicitacao_de_servico.prioridade == '3' %} alert-danger{% else %} alert-secondary{% endif %}">
                     <div class="p-2 text-truncate">
                         <a class="text-dark" href="/{{ solicitacao_de_servico.id }}">{{ solicitacao_de_servico.id }}</a>
                     </div>
                 </div>
-            {% endfor %}
+                {% endfor %}
             {% else %}
                     <div class="alert alert-secondary text-center">
                         Sem solicitação de serviço para este dia.
