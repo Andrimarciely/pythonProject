@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import SolicitacaoDeServico
-
+from datetime import datetime, timedelta
+from django.utils.timezone import localdate, now
 
 def index(request):
     """Exibe todas as solicitações de serviços consolidados em uma única página. Não recebe parâmetros"""
@@ -30,6 +31,6 @@ def day(request, year, month, day):
         'previous': day - timedelta(days=1),
         'next': day + timedelta(days=1),
         'solicitacoes_de_servicos': SolicitacaoDeServico.objects.filter(
-            date="{:%Y-%m-%d}".format(day)).order_by('-priority', 'solicitacoes_de_servicos')
+            data_de_entrega_do_relatorio="{:%Y-%m-%d}".format(day)).order_by('-prioridade')
     }
     return render(request, 'day.html', context)

@@ -20,9 +20,12 @@
                 <tbody>
                 {% for solicitacao_de_servico in solicitacoes_de_servicos %}
                 <tr class="{% if solicitacao_de_servico.prioridade == '1' %} table-success{% elif event.priority == '2' %} table-warning{% elif event.priority == '3' %} table-danger{% else %} table-default{% endif %}">
-                    <td><a class="text-dark"
+                    <td>
+                        <a class="text-dark"
                            href="{% url 'solicitacao-de-servico-day' solicitacao_de_servico.data_de_entrega_do_relatorio.year solicitacao_de_servico.data_de_entrega_do_relatorio.month solicitacao_de_servico.data_de_entrega_do_relatorio.day %}">
-                        {{ event.date|date:"d-m-Y" }}</a></td>
+                            {{ solicitacao_de_servico.data_de_entrega_do_relatorio|date:"d-m-Y" }}
+                        </a>
+                    </td>
                     <td class="text-truncate">
                         <a class="text-dark" href="{% url 'solicitacao-de-servico-show' solicitacao_de_servico.id %}">{{ solicitacao_de_servico.id }}</a>
                     </td>
